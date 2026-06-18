@@ -1,3 +1,5 @@
+📊 Kpi_Finance_Personelle_V1
+
 Adieu le vieux fichier Excel austère !
 Kpi_Finance_Personelle_V1 est votre Directeur Financier (CFO) personnel, conçu pour tourner localement sur votre serveur (LXC Proxmox, NAS...).
 
