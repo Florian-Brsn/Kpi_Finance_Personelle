@@ -12,56 +12,145 @@
             --accent-orange: #f97316; --accent-pink: #ec4899;
             --text-main: #f8fafc; --text-muted: #a1a1aa;
         }
+        
+        /* CORRECTION CRUCIALE : Empêche les colonnes de se manger */
+        * {
+            box-sizing: border-box;
+        }
+        
         body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-base); color: var(--text-main); font-size: 0.85rem; padding: 1rem 0; overflow-x: hidden; }
         
-        .os-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid #3f3f46; padding-bottom: 1rem; position: sticky; top: 0; background: rgba(9,9,11,0.9); z-index: 2000; padding-top: 1rem; backdrop-filter: blur(10px); }
+        .os-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #3f3f46; padding-bottom: 1rem; position: sticky; top: 0; background: rgba(9,9,11,0.9); z-index: 2000; padding-top: 1rem; backdrop-filter: blur(10px); }
         .os-nav button { background: var(--bg-panel); color: white; border: 1px solid #3f3f46; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
         .os-nav button.active { background: var(--accent-blue); border-color: var(--accent-blue); }
+        
         .tab-content { display: none; width: 100%; justify-content: center; }
         .tab-content.active { display: flex; }
+
+        /* --- SÉLECTEUR DE MOIS GLOBAL --- */
+        .global-month-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .global-month-box {
+            background: var(--bg-panel);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .global-month-box label {
+            font-weight: bold;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        .global-month-box input[type="month"] {
+            margin: 0;
+            width: auto;
+            padding: 5px 10px;
+            background: var(--bg-card);
+            border-radius: 20px;
+        }
 
         /* --- CSS DU SIMULATEUR --- */
         .zoom-control { position: fixed; top: 15px; right: 20px; background: rgba(24, 24, 27, 0.9); backdrop-filter: blur(5px); padding: 8px 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 15px; z-index: 3000; }
         .zoom-control label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: bold; }
         .zoom-control input[type=range] { width: 100px; margin: 0; }
+        
         .dashboard-wrapper { width: 100%; display: flex; justify-content: center; transform-origin: top center; transition: transform 0.1s ease-out; transform: scale(0.8); }
-        .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1100px; width: 95%; }
+        .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1100px; width: 95%; align-items: start; }
+        
         .panel { background-color: var(--bg-panel); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; max-width: 800px;}
         .dashboard .panel { max-width: none; }
+        
         h2 { margin-top: 0; border-bottom: 1px solid #3f3f46; padding-bottom: 0.5rem; font-size: 1.2rem; }
         .section-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; margin-top: 1rem; font-weight: bold; }
         .section-title.blue { color: var(--accent-blue); } .section-title.green { color: var(--accent-green); } .section-title.purple { color: var(--accent-purple); } .section-title.orange { color: var(--accent-orange); } .section-title.pink { color: var(--accent-pink); }
+        
         .control-group { background: var(--bg-card); padding: 0.8rem 1rem; border-radius: 10px; margin-bottom: 0.5rem; border: 1px solid transparent; }
         .control-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-weight: 500; }
         .value-display { font-weight: 800; font-size: 1rem; }
         .value-display-small { font-size: 0.8rem; color: var(--text-muted); font-weight: normal; display: block; text-align: right; }
+        
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; margin-top: 5px; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%; cursor: pointer; margin-top: -6px; background: white; }
         .blue input[type=range]::-webkit-slider-thumb { background: var(--accent-blue); box-shadow: 0 0 10px var(--accent-blue); } .green input[type=range]::-webkit-slider-thumb { background: var(--accent-green); box-shadow: 0 0 10px var(--accent-green); } .purple input[type=range]::-webkit-slider-thumb { background: var(--accent-purple); box-shadow: 0 0 10px var(--accent-purple); } .orange input[type=range]::-webkit-slider-thumb { background: var(--accent-orange); box-shadow: 0 0 10px var(--accent-orange); } .pink input[type=range]::-webkit-slider-thumb { background: var(--accent-pink); box-shadow: 0 0 10px var(--accent-pink); }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #3f3f46; border-radius: 2px; }
+        
         select, input[type="number"], input[type="month"], input[type="text"] { width: 100%; padding: 8px; background: #3f3f46; color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; font-family: inherit; outline: none; margin-bottom: 5px; box-sizing: border-box; }
         .info-text { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; display: flex; justify-content: space-between; }
+        
         .result-block { background: var(--bg-card); padding: 1rem; border-radius: 10px; margin-bottom: 0.8rem; border-left: 4px solid transparent; }
         .rb-cash { border-color: var(--accent-green); } .rb-assets { border-color: var(--accent-purple); } .rb-total { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.2)); border-color: var(--accent-blue); }
         .rb-header { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
         .rb-value { font-size: 2rem; font-weight: 900; }
         .rb-cash .rb-value { color: var(--accent-green); } .rb-assets .rb-value { color: var(--accent-purple); }
+        
         .detail-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px dashed rgba(255,255,255,0.1); }
-        .btn-save { background: var(--accent-green); color: black; width: 100%; font-weight: bold; padding: 12px; margin-top: 1rem; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; }
+        
+        .btn-save { background: var(--accent-green); color: #09090b; width: 100%; font-weight: 900; padding: 14px; margin-top: 1rem; border: none; border-radius: 10px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); }
+        .btn-save:hover { background: #0cbd7e; }
+        
         .export-link { color: var(--accent-blue); text-decoration: none; font-weight: bold; display: inline-block; padding: 10px; border: 1px solid var(--accent-blue); border-radius: 6px;}
+
+        /* --- TOAST NOTIFICATION MODERNE --- */
+        #toast-notification {
+            position: fixed;
+            bottom: -100px;
+            right: 20px;
+            background: #10b981;
+            color: #09090b;
+            padding: 16px 28px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 15px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+            opacity: 0;
+        }
+        #toast-notification.show {
+            bottom: 25px;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
+    <!-- NAVIGATION -->
     <nav class="os-nav">
         <button class="active" onclick="switchTab('simu')">1. Simulateur</button>
         <button onclick="switchTab('budget')">2. Budget & Investissements</button>
         <button onclick="switchTab('bilan')">3. Bilan & Export Excel</button>
     </nav>
 
+    <!-- NOUVEAU : MOIS DE TRAVAIL UNIQUE ET GLOBAL -->
+    <div class="global-month-bar">
+        <div class="global-month-box">
+            <label>📅 Mois de simulation :</label>
+            <input type="month" id="month_picker" value="2026-06">
+        </div>
+    </div>
+
+    <!-- ZOOM -->
     <div class="zoom-control">
         <label>🔍 Zoom</label>
         <input type="range" id="zoom-slider" min="0.6" max="1.2" step="0.05" value="0.8">
+    </div>
+
+    <!-- TOAST POPUP (ALERT CONFIRMATION) -->
+    <div id="toast-notification">
+        <span>✅</span> <span id="toast-text">Mois figé avec succès !</span>
     </div>
 
     <!-- ONGLET 1 : SIMULATEUR COMPLET -->
@@ -167,6 +256,9 @@
                             <span id="res-rendement-pa" style="color: var(--accent-green); font-weight: bold;">0 %</span>
                         </div>
                     </div>
+
+                    <!-- AJOUT : BOUTON SAUVEGARDE DIRECTEMENT SUR L'ONGLET 1 -->
+                    <button class="btn-save" onclick="saveMonth()">💾 Figer & Sauvegarder ce mois</button>
                 </div>
             </div>
         </div>
@@ -175,17 +267,14 @@
     <!-- ONGLET 2 : DÉPENSES & INVESTISSEMENTS -->
     <div id="budget" class="tab-content">
         <div class="panel">
-            <h2>💰 Budgéter & Figer un mois</h2>
-            <div class="control-group" style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent-blue);">
-                <label style="color:var(--accent-blue); font-weight:bold;">Mois concerné (ex: Mai 2026)</label>
-                <input type="month" id="month_picker" value="2026-05" style="font-size:1.1rem; margin-top:5px;">
-            </div>
+            <h2>💰 Budgéter tes charges réelles</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Remplis tes coûts réels. En sauvegardant, ils seront mis en corrélation avec tes gains calculés dans l'onglet simulateur.</p>
             
-            <h3 style="margin-top:1.5rem; color:var(--text-muted);">Charges Courantes</h3>
+            <h3 style="color:var(--text-muted);">Charges Courantes</h3>
             <div class="control-group"><label>Loyer / Prêt Immo (€)</label><input type="number" id="exp_loyer" value="800"></div>
             <div class="control-group"><label>Factures (Eau, Elec, Internet) (€)</label><input type="number" id="exp_factures" value="150"></div>
             <div class="control-group">
-                <label>Courses & Alimentation <span style="color:var(--accent-pink); font-size:0.8rem;">(Amorties par tes avantages)</span></label>
+                <label>Courses & Alimentation <span style="color:var(--accent-pink); font-size:0.8rem;">(Amorties par tes chèques culture/TR)</span></label>
                 <input type="number" id="exp_courses" value="500">
             </div>
 
@@ -195,6 +284,7 @@
                 <input type="number" id="inv_pea" value="300">
             </div>
             
+            <!-- BOUTON DU COMPTE DU BUDGET AVEC NOTIFICATION TOAST -->
             <button class="btn-save" onclick="saveMonth()">💾 Figer et Sauvegarder ce mois</button>
         </div>
     </div>
@@ -265,7 +355,6 @@
             document.getElementById('dashboard-wrapper').style.transform = `scale(${e.target.value})`;
         });
 
-        // NOUVEAU : Toggle Statut Professionnel
         function toggleStatut() {
             const isSalarie = document.getElementById('statut').value === 'salarie';
             document.querySelectorAll('.portage-only').forEach(el => el.style.display = isSalarie ? 'none' : 'block');
@@ -286,14 +375,12 @@
 
         function calculer() {
             const statut = document.getElementById('statut').value;
-            
-            // Communs
-            const culture = parseFloat(document.getElementById('culture').value);
-            const joursTr = parseInt(document.getElementById('tr').value);
-            const valeurTR = parseFloat(document.getElementById('tr-montant').value);
-            const km = parseFloat(document.getElementById('km').value);
-            const cv = parseInt(document.getElementById('cv').value);
-            const partsFiscales = parseFloat(document.getElementById('parts').value);
+            const culture = parseFloat(document.getElementById('culture').value) || 0;
+            const joursTr = parseInt(document.getElementById('tr').value) || 0;
+            const valeurTR = parseFloat(document.getElementById('tr-montant').value) || 0;
+            const km = parseFloat(document.getElementById('km').value) || 0;
+            const cv = parseInt(document.getElementById('cv').value) || 7;
+            const partsFiscales = parseFloat(document.getElementById('parts').value) || 1;
             
             const montantIK = calculerIK(km, cv); 
             const coutSalarieTR = joursTr * (valeurTR * 0.40);
@@ -309,14 +396,14 @@
             let epargneEtActifs = 0;
             let valeurTotaleCreate = 0;
             let salaireNet = 0;
-            let baseRevenu = 0; // Servira pour l'historique BDD (CA ou Brut)
+            let baseRevenu = 0;
 
             if (statut === 'portage') {
-                const ca = parseFloat(document.getElementById('ca').value);
-                const matos = parseFloat(document.getElementById('matos').value);
+                const ca = parseFloat(document.getElementById('ca').value) || 0;
+                const matos = parseFloat(document.getElementById('matos').value) || 0;
                 const fraisType = document.getElementById('frais-type').value;
-                const fraisVal = parseFloat(document.getElementById('frais-val').value);
-                const versementVolontaire = parseFloat(document.getElementById('pee-volontaire').value);
+                const fraisVal = parseFloat(document.getElementById('frais-val').value) || 0;
+                const versementVolontaire = parseFloat(document.getElementById('pee-volontaire').value) || 0;
                 
                 baseRevenu = ca;
                 document.getElementById('val-ca').innerText = fmt(ca);
@@ -325,7 +412,7 @@
                 const abondement = versementVolontaire * 3; 
                 const placementPeeTotal = versementVolontaire + abondement;
                 document.getElementById('val-pee').innerText = fmt(versementVolontaire);
-                document.getElementById('val-pee-total').innerText = `(Total placé : ${fmt(placementPeeTotal)})`;
+                document.getElementById('val-pee-total').innerText = `(Total : ${fmt(placementPeeTotal)})`;
 
                 let commissionPortage = fraisType === 'percent' ? ca * (fraisVal / 100) : fraisVal;
                 const budgetBrut = ca - commissionPortage;
@@ -349,25 +436,21 @@
                 document.getElementById('res-rendement-pa').innerText = rendementImmediat.toFixed(1) + " %";
 
                 GLOBALS.pee = placementPeeTotal;
-
             } else {
-                // LOGIQUE SALARIÉ
-                const salaireBrut = parseFloat(document.getElementById('salaire-brut').value);
+                const salaireBrut = parseFloat(document.getElementById('salaire-brut').value) || 0;
                 baseRevenu = salaireBrut;
                 document.getElementById('val-salaire-brut').innerText = fmt(salaireBrut);
                 
-                // Estimation Net (~22% de charges)
                 salaireNet = salaireBrut * 0.78;
-                const salaireNetFinal = salaireNet - coutSalarieTR;
+                const salaireNetFinal = 1 != 1 ? 0 : (salaireNet - coutSalarieTR);
                 
                 virementBancaire = Math.max(0, salaireNetFinal + montantIK);
                 pouvoirAchatImmediat = virementBancaire + pouvoirAchatTR + culture;
-                valeurTotaleCreate = pouvoirAchatImmediat; // Pas de PEE/Matos dans cette version simple
+                valeurTotaleCreate = pouvoirAchatImmediat;
                 epargneEtActifs = 0;
                 GLOBALS.pee = 0;
             }
 
-            // Calcul Impôts (Commun)
             const revenuImposable = (salaireNet * 12) * 0.90; 
             const qf = revenuImposable / partsFiscales;
             let impotAnnuel = 0;
@@ -379,13 +462,11 @@
             const superNet = virementBancaire - impotMensuel;
             const pouvoirAchatTotalApresImpot = superNet + pouvoirAchatTR + culture;
 
-            // Enregistrement Base de données
             GLOBALS.ca = baseRevenu;
             GLOBALS.culture = culture;
             GLOBALS.superNet = superNet;
             GLOBALS.paTotal = pouvoirAchatTotalApresImpot;
 
-            // Injection DOM
             document.getElementById('res-pa-immediat').innerText = fmt(pouvoirAchatImmediat);
             document.getElementById('det-virement').innerText = fmt(virementBancaire);
             document.getElementById('det-taux-pas').innerText = tauxPas.toFixed(1) + "%";
@@ -393,10 +474,22 @@
             document.getElementById('det-supernet').innerText = fmt(superNet);
             document.getElementById('det-pa-total').innerText = fmt(pouvoirAchatTotalApresImpot);
             
-            if (statut === 'portage') {
+            if (document.getElementById('statut').value === 'portage') {
                 document.getElementById('res-epargne').innerText = fmt(epargneEtActifs);
             }
             document.getElementById('res-total').innerText = fmt(valeurTotaleCreate);
+        }
+
+        // --- NOUVEAU NOTIFICATION INTERNE TOAST ---
+        function triggerToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const toastText = document.getElementById('toast-text');
+            toastText.innerText = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500);
         }
 
         function saveMonth() {
@@ -414,10 +507,12 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
-            }).then(r => r.json()).then(data => alert("✅ " + data.message));
+            }).then(r => r.json()).then(data => {
+                // Remplacement de l'alert moche par le toast élégant
+                triggerToast(data.message);
+            });
         }
 
-        // --- DASHBOARD ---
         let historyData = [];
 
         function loadHistory() {
@@ -432,7 +527,7 @@
 
         function buildFilterDropdown() {
             const select = document.getElementById('dash_filter');
-            select.innerHTML = '<option value="all">Tout l\'historique</option>';
+            select.innerHTML = '<option value="all">Tout l'historique</option>';
             let years = new Set();
             historyData.forEach(row => {
                 const year = row.month_year.split('-')[0];
@@ -476,7 +571,6 @@
             document.getElementById('kpi_invest').innerText = fmt(sumInvest);
         }
 
-        // --- INIT ---
         ['statut', 'salaire-brut', 'ca', 'matos', 'culture', 'tr', 'tr-montant', 'km', 'cv', 'pee-volontaire', 'parts', 'frais-type', 'frais-val'].forEach(id => {
             document.getElementById(id).addEventListener('input', calculer);
         });
