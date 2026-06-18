@@ -35,6 +35,7 @@ Exportez toute votre base de données locale en un clic au format CSV/Excel.
 
 
 🛠️ Stack Technique
+
 Pensée pour la légèreté et l'auto-hébergement (consomme quelques Mo de RAM) :
 
 Backend : Python 3 + Flask
@@ -49,30 +50,31 @@ Déploiement : Script Bash avec création automatique d'un daemon systemd.
 
 
 🚀 Installation Express (Linux / Debian / Ubuntu / LXC Proxmox)
+
 Le projet s'installe tout seul et tourne en arrière-plan en moins de 2 minutes.
 
 1. Clonez le dépôt sur votre machine :
 
-Bash
 git clone https://github.com/Florian-Brsn/Kpi_Finance_Personelle.git
-cd Kpi_Finance_Personelle_V1
+cd Kpi_Finance_Personelle
+
 2. Lancez le script d'installation automatique :
 
-Bash
 chmod +x install.sh
 ./install.sh
 (Le script installe Python/Flask, configure l'environnement virtuel, et crée le service systemd pour que l'app se lance au démarrage).
 
 3. Accédez à l'application :
+
 Ouvrez un navigateur web sur n'importe quel appareil de votre réseau local :
 
-Plaintext
 http://VOTRE_IP_LOCALE:5000
 
 
 
 
 🗺️ Roadmap (À venir dans la V1.X)
+
 [ ] Ajout d'une catégorie d'investissement Cryptomonnaies.
 
 [ ] Connexion API (ex: CoinGecko/Binance) pour actualiser la valeur du portfolio crypto en temps réel.
