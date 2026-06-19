@@ -55,7 +55,7 @@ Le projet s'installe tout seul et tourne en arrière-plan en moins de 2 minutes.
 
 1. Clonez le dépôt sur votre machine :
 
-git clone https://github.com/Florian-Brsn/Kpi_Finance_Personnelle.git
+git clone https://github.com/Titane-1/Kpi_Finance_Personnelle.git
 cd Kpi_Finance_Personnelle
 
 2. Lancez le script d'installation automatique :
