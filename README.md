@@ -1,7 +1,7 @@
-📊 Kpi_Finance_Personelle_V1
+📊 Kpi_Finance_Personnelle_V1
 
 Adieu le vieux fichier Excel austère !
-Kpi_Finance_Personelle_V1 est votre Directeur Financier (CFO) personnel, conçu pour tourner localement sur votre serveur (LXC Proxmox, NAS...).
+Kpi_Finance_Personnelle_V1 est votre Directeur Financier (CFO) personnnel, conçu pour tourner localement sur votre serveur (LXC Proxmox, NAS...).
 
 Que vous soyez en Portage Salarial ou Salarié classique (CDI/CDD), la plupart des simulateurs s'arrêtent au "Salaire Net". Cette application web auto-hébergée va plus loin : elle fait le pont entre vos revenus bruts, vos optimisations (Chèques Culture, TR, PEE) et vos dépenses réelles pour calculer et historiser votre Véritable Pouvoir d'Achat.
 
@@ -55,8 +55,8 @@ Le projet s'installe tout seul et tourne en arrière-plan en moins de 2 minutes.
 
 1. Clonez le dépôt sur votre machine :
 
-git clone https://github.com/Florian-Brsn/Kpi_Finance_Personelle.git
-cd Kpi_Finance_Personelle
+git clone https://github.com/Florian-Brsn/Kpi_Finance_Personnelle.git
+cd Kpi_Finance_Personnelle
 
 2. Lancez le script d'installation automatique :
 
